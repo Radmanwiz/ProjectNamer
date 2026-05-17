@@ -64,6 +64,9 @@ html_app = """
   <script type="text/babel">
     const { useState, useEffect } = React;
 
+    // Class Merger Helper
+    const cn = (...classes) => classes.filter(Boolean).join(' ');
+
     // Inline SVG Icon primitives for performance & consistency
     const SunIcon = () => <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.59 1.59m12.38 12.38l1.59 1.59M3 12h2.25m13.5 0H21M4.22 19.78l1.59-1.59m12.38-12.38l1.59-1.59M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" /></svg>;
     const MoonIcon = () => <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>;
@@ -87,6 +90,20 @@ html_app = """
     const SparklesIcon = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.187-.813L9 9l.813 5.187L15 15l-5.187.904zM19.071 4.929l-.353 1.768-1.768.353 1.768.353.353 1.768.353-1.768 1.768-.353-1.768-.353-.353-1.768z" /></svg>;
     const TrophyIcon = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.504-1.125-1.125-1.125h-6.75A1.125 1.125 0 007.5 15.375V18.75M9 3.75h6m-12 3a3 3 0 003 3h12a3 3 0 003-3v-1.5a3 3 0 00-3-3H6a3 3 0 00-3 3v1.5z" /></svg>;
     const TargetIcon = () => <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m9-9H3m12 0a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
+
+    // Curated Milestones list mapped correctly
+    const AVAILABLE_ICONS = [
+      { name: 'number', label: '#' },
+      { name: 'flag', icon: FlagIcon },
+      { name: 'star', icon: StarIcon },
+      { name: 'rocket', icon: RocketIcon },
+      { name: 'code', icon: CodeIcon },
+      { name: 'palette', icon: PaletteIcon },
+      { name: 'search', icon: SearchIcon },
+      { name: 'sparkles', icon: SparklesIcon },
+      { name: 'trophy', icon: TrophyIcon },
+      { name: 'target', icon: TargetIcon },
+    ];
 
     const renderCheckpointIcon = (iconName, index) => {
       switch (iconName) {
