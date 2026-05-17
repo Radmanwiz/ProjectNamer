@@ -414,16 +414,11 @@ html_app = """
 
       return (
         <div className="min-h-screen pb-24 font-sans">
-          {/* macOS titlebar header design mock */}
-          <header className={`border-b border-zinc-200 dark:border-zinc-900 bg-white/90 dark:bg-zinc-950/90 sticky top-0 backdrop-blur-lg z-40 px-6 md:px-12 py-4`}>
-            <div className="max-w-6xl mx-auto flex items-center justify-between">
+          {/* macOS titlebar header design mock - Traffic lights removed & expanded to full width */}
+          <header className="border-b border-zinc-200 dark:border-zinc-900 bg-white/90 dark:bg-zinc-950/90 sticky top-0 backdrop-blur-lg z-40 px-6 md:px-12 py-4">
+            <div className="w-full flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5 mr-2">
-                  <span className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]" />
-                  <span className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]" />
-                  <span className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29]" />
-                </div>
-                <span className="font-extrabold text-xs tracking-widest uppercase text-zinc-550 dark:text-zinc-400">Desktop Workspace</span>
+                <span className="font-extrabold text-xs tracking-widest uppercase text-zinc-500 dark:text-zinc-400">Timeline Workspace</span>
               </div>
               <Button variant="outline" className="w-8 h-8 rounded-lg !p-0" onClick={() => setIsDarkMode(!isDarkMode)}>
                 {isDarkMode ? <SunIcon /> : <MoonIcon />}
@@ -431,7 +426,7 @@ html_app = """
             </div>
           </header>
 
-          <main className="max-w-6xl mx-auto px-6 md:px-12 pt-10 space-y-8 animate-in fade-in duration-300">
+          <main className="w-full px-6 md:px-12 pt-10 space-y-8 animate-in fade-in duration-300">
             {/* Project Index list */}
             <Card className="p-6">
               <div className="flex items-center justify-between mb-4 pb-2 border-b border-zinc-100 dark:border-zinc-900">
@@ -703,4 +698,4 @@ html_app = """
 """
 
 # Render the macOS high-fidelity workspace inside the Streamlit view
-components.html(html_app, height=920, scrolling=True)
+components.html(html_app, height=1080, scrolling=True)
